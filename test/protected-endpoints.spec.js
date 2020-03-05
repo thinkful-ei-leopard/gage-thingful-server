@@ -41,13 +41,13 @@ describe('Protected endpoints', function() {
       method: supertest(app).get,
     },
     {
-      name: 'GET /api/things/:thing_id/comments',
-      path: '/api/things/1/comments',
+      name: 'GET /api/things/:thing_id/reviews',
+      path: '/api/things/1/reviews',
       method: supertest(app).get,
     },
     {
-      name: 'POST /api/comments',
-      path: '/api/comments',
+      name: 'POST /api/reviews',
+      path: '/api/reviews',
       method: supertest(app).post,
     },
   ]

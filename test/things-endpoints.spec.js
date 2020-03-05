@@ -85,10 +85,10 @@ describe('Things Endpoints', function() {
     })
   })
 
-  describe.only(`GET /api/things/:thing_id`, () => {
+  describe(`GET /api/things/:thing_id`, () => {
     context(`Given no things`, () => {
       beforeEach(() =>
-        db.into('thingful_users').insert(testUsers)
+        helpers.seedUsers(db, testUsers)
       )
 
       it(`responds with 404`, () => {
@@ -126,7 +126,7 @@ describe('Things Endpoints', function() {
     })
 
     context(`Given an XSS attack thing`, () => {
-      const testUser = helpers.makeUsersArray()[1]
+      const testUser = helpers.makeUsersArray()[0]
       const {
         maliciousThing,
         expectedThing,
@@ -156,7 +156,7 @@ describe('Things Endpoints', function() {
   describe(`GET /api/things/:thing_id/reviews`, () => {
     context(`Given no things`, () => {
       beforeEach(() => {
-        db.into('thingful_users').insert(testUsers)
+        helpers.seedUsers(db, testUsers)
       })
 
       it(`responds with 404`, () => {
